@@ -24,12 +24,8 @@ public class StationService {
     public Long returnStationIdWithLeastDrones() {
         int droneCount = 999;
         long stationId = 0;
-
-        List<Station> stations = stationRepository.findAll();
-
         HashMap<Long, Integer> stationIdToDroneCount = new HashMap<>();
-
-
+        List<Station> stations = stationRepository.findAll();
         //Iterates through all stations and gets the number of drones in each station and saves it in a hashmap
         for (Station station : stations) {
             stationIdToDroneCount.put(station.getId(), station.getDrone().size());
@@ -44,6 +40,4 @@ public class StationService {
         }
         return stationId;
     }
-
-
 }

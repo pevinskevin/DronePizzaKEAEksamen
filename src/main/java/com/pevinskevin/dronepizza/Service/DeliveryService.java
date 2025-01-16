@@ -25,6 +25,7 @@ public class DeliveryService {
         return deliveryRepository.save(delivery);
     }
 
+    //Will create a new delivery with the given address and pizzaId - will return error if address is empty or insufficient in length, or if pizzaId is not found
     public Delivery createNewDelivery(String address, long pizzaId) {
         if (address == null || address.isEmpty() || address.length() < 10) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Address cannot be empty or insufficient in length.");
@@ -40,6 +41,7 @@ public class DeliveryService {
         return deliveryRepository.findById(id).orElse(null);
     }
 
+    //Returns a list of all deliveries where isDelivered is false - will return error if no undelivered orders are found
     public List<Delivery> getAllDeliveriesWhereIsDeliveredIsFalse() {
         List<Delivery> deliveries = deliveryRepository.findAllByIsDeliveredIsFalse();
         if (deliveries.isEmpty()) {
@@ -48,6 +50,7 @@ public class DeliveryService {
         return deliveries;
     }
 
+    //Returns a list of all deliveries where isDelivered is false and droneId is null - will return error if no undelivered orders are found
     public List<Delivery> findAllByIsDeliveredIsFalseAndDroneIdIsNull() {
         List<Delivery> deliveries = deliveryRepository.findAllByIsDeliveredIsFalseAndDroneIsNull();
         if (deliveries.isEmpty()) {
@@ -56,6 +59,7 @@ public class DeliveryService {
         return deliveries;
     }
 
+    //Will assign a drone to a delivery using the deliveryId - will return error if deliveryId is invalid, or if a drone is already assigned to the delivery
     public Delivery assignDroneToDeliveryUsingDeliveryId(long deliveryId) {
         List<Delivery> list = getAllDeliveriesWhereIsDeliveredIsFalse();
         if (deliveryId > list.size() || deliveryId <= 0) {
@@ -72,6 +76,7 @@ public class DeliveryService {
         }
     }
 
+    //Will update the delivery as delivered using the deliveryId - will return error if deliveryId is invalid, or if the delivery is already marked as delivered
     public Delivery updateIsDeliveredToTrue(long deliveryId) {
         if (getDeliveryById(deliveryId) == null || getDeliveryById(deliveryId).getId() != deliveryId) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Delivery not found.");

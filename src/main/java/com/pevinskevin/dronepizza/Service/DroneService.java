@@ -34,6 +34,7 @@ public class DroneService {
         return droneRepository.findAllByOperationalStatus(status);
     }
 
+    //Finds station with least amount of drones and adds a new drone to it
     public Drone addNewDrone() {
         Station station = stationService.getStationById(stationService.returnStationIdWithLeastDrones());
         Drone drone = new Drone(UUID.randomUUID(), DroneStatus.I_DRIFT, station);

@@ -2,19 +2,19 @@
 GET localhost:8080/deliveries
 ###
 
-####
+#### Get all deliveries that are in the queue
 GET localhost:8080/deliveries/queue
 ####
 
-####
+#### Assign random drone to delivery using delivery id
 POST localhost:8080/deliveries/schedule?deliveryId=1
 ####
 
-####
+#### Create a new delivery using address and pizza id
 POST http://localhost:8080/deliveries/add?address=Rentemestervej%2017%2C%202300%20Kbh%20S&pizzaId=2
 ####
 
-####
+#### Mark delivery as finished using delivery id
 POST localhost:8080/deliveries/finish?deliveryId=1
 ####
 
