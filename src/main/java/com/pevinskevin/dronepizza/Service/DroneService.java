@@ -30,13 +30,26 @@ public class DroneService {
 
 
     public Drone addNewDrone() {
-//    A list of stations is created - check.
-//    The number of drones pr. station is counted.
-//    The station with the least drones is returned.
-//    A new drone is created and assigned to the returned station ID.
-
         Station station = stationService.getStationById(stationService.returnStationIdWithLeastDrones());
         Drone drone = new Drone(UUID.randomUUID(), DroneStatus.I_DRIFT, station);
         return droneRepository.save(drone);
+    }
+
+    public Drone enableDrone(long droneId){
+        Drone drone = getDroneById(droneId);
+        drone.setOperationalStatus(DroneStatus.I_DRIFT);
+        return saveDrone(drone);
+    }
+
+    public Drone disableDrone(long droneId){
+        Drone drone = getDroneById(droneId);
+        drone.setOperationalStatus(DroneStatus.UDE_AF_DRIFT);
+        return saveDrone(drone);
+    }
+
+    public Drone retireDrone(long droneId){
+        Drone drone = getDroneById(droneId);
+        drone.setOperationalStatus(DroneStatus.UDFASET);
+        return saveDrone(drone);
     }
 }

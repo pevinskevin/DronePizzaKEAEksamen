@@ -24,4 +24,19 @@ public class DroneController {
     public Drone addDrone() {
         return droneService.addNewDrone();
     }
+
+    @PostMapping("drones/enable")
+    public Drone enableDroneUsingId(long droneId) {
+        return droneService.enableDrone(droneId);
+    }
+
+    @PostMapping("drones/disable")
+    public Drone disableDrongUsingId(long droneId) {
+        return droneService.disableDrone(droneId);
+    }
+
+    @PostMapping("drones/retire")
+    public Drone retireDroneUsingId(long droneId) {
+        return droneService.retireDrone(droneId);
+    }
 }

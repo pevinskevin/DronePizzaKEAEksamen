@@ -14,6 +14,7 @@ public class Delivery {
     private String address;
     private LocalTime expectedDeliveryTime;
     private LocalTime actualDeliveryTime;
+    private Boolean isDelivered;
     @ManyToOne
     private Drone drone;
     @OneToMany
@@ -75,5 +76,13 @@ public class Delivery {
 
     public void setPizzas(List<Pizza> pizzas) {
         this.pizzas = pizzas;
+    }
+
+    public Boolean getDelivered() {
+        return isDelivered;
+    }
+
+    public void setDelivered(Boolean delivered) {
+        isDelivered = delivered;
     }
 }
