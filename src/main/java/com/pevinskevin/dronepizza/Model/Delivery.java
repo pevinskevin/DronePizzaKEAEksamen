@@ -17,6 +17,7 @@ public class Delivery {
     @ManyToOne
     private Drone drone;
     @OneToMany
+    @JoinColumn(name = "pizza_id")
     private List<Pizza> pizzas;
 
     public Delivery() {

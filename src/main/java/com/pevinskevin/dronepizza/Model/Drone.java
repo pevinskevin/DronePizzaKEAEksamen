@@ -17,6 +17,11 @@ public class Drone {
     public Drone() {
     }
 
+    public Drone(UUID serialUUID, DroneStatus operationalStatus) {
+        this.serialUUID = serialUUID;
+        this.operationalStatus = operationalStatus;
+    }
+
     public Drone(UUID serialUUID, DroneStatus operationalStatus, Station station) {
         this.serialUUID = serialUUID;
         this.operationalStatus = operationalStatus;

@@ -35,8 +35,10 @@ public class TestData implements CommandLineRunner {
         Station station2 = stationService.saveStation(new Station(55.42, 12.35));
         Station station3 = stationService.saveStation(new Station(55.43, 12.36));
 
-        droneService.saveDrone(new Drone(UUID.randomUUID(), DroneStatus.UDE_AF_DRIFT, station1));
-        droneService.saveDrone(new Drone(UUID.randomUUID(), DroneStatus.UDE_AF_DRIFT, station2));
-        droneService.saveDrone(new Drone(UUID.randomUUID(), DroneStatus.UDE_AF_DRIFT, station3));
+        droneService.saveDrone(new Drone(UUID.randomUUID(), DroneStatus.I_DRIFT, station1));
+        droneService.saveDrone(new Drone(UUID.randomUUID(), DroneStatus.I_DRIFT, station1));
+
+        droneService.saveDrone(new Drone(UUID.randomUUID(), DroneStatus.I_DRIFT, station2));
+        droneService.saveDrone(new Drone(UUID.randomUUID(), DroneStatus.I_DRIFT, station3));
     }
 }

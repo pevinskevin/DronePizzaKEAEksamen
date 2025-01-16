@@ -1,18 +1,20 @@
 package com.pevinskevin.dronepizza.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
-
 public class Station {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private double latitude;
     private double longitude;
+    @OneToMany(mappedBy = "station")
+    @JsonIgnore
+    private List<Drone> drone;
 
     public Station() {
     }
@@ -44,5 +46,13 @@ public class Station {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public List<Drone> getDrone() {
+        return drone;
+    }
+
+    public void setDrone(List<Drone> drone) {
+        this.drone = drone;
     }
 }
