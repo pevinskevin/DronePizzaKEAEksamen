@@ -9,12 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Component
 public class TestData implements CommandLineRunner {
 
-
+    @Autowired
+    DeliveryService deliveryService;
     @Autowired
     DroneService droneService;
     @Autowired
@@ -40,5 +44,11 @@ public class TestData implements CommandLineRunner {
 
         droneService.saveDrone(new Drone(UUID.randomUUID(), DroneStatus.I_DRIFT, station2));
         droneService.saveDrone(new Drone(UUID.randomUUID(), DroneStatus.I_DRIFT, station3));
+
+        deliveryService.saveDelivery(new Delivery("Kungsgatan 1", LocalTime.of(12, 0), pizzaService.getPizzaById(1L)));
+        deliveryService.saveDelivery(new Delivery("Kungsgatan 2", LocalTime.of(12, 0), pizzaService.getPizzaById(2L)));
+        deliveryService.saveDelivery(new Delivery("Kungsgatan 3", LocalTime.of(13, 0), pizzaService.getPizzaById(3L)));
+        deliveryService.saveDelivery(new Delivery("Kungsgatan 4", LocalTime.of(12, 0), pizzaService.getPizzaById(4L)));
+
     }
 }

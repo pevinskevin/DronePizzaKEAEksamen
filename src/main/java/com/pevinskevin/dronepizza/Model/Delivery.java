@@ -14,20 +14,19 @@ public class Delivery {
     private String address;
     private LocalTime expectedDeliveryTime;
     private LocalTime actualDeliveryTime;
-    private Boolean isDelivered;
+    private Boolean isDelivered = false;
     @ManyToOne
     private Drone drone;
-    @OneToMany
-    @JoinColumn(name = "pizza_id")
-    private List<Pizza> pizzas;
+    @OneToOne
+    private Pizza pizza;
 
     public Delivery() {
     }
 
-    public Delivery(String address, LocalTime expectedDeliveryTime, List<Pizza> pizzas) {
+    public Delivery(String address, LocalTime expectedDeliveryTime, Pizza pizza) {
         this.address = address;
         this.expectedDeliveryTime = expectedDeliveryTime;
-        this.pizzas = pizzas;
+        this.pizza = pizza;
     }
 
     public long getId() {
@@ -70,19 +69,19 @@ public class Delivery {
         this.drone = drone;
     }
 
-    public List<Pizza> getPizzas() {
-        return pizzas;
-    }
-
-    public void setPizzas(List<Pizza> pizzas) {
-        this.pizzas = pizzas;
-    }
-
     public Boolean getDelivered() {
         return isDelivered;
     }
 
     public void setDelivered(Boolean delivered) {
         isDelivered = delivered;
+    }
+
+    public Pizza getPizza() {
+        return pizza;
+    }
+
+    public void setPizza(Pizza pizza) {
+        this.pizza = pizza;
     }
 }
