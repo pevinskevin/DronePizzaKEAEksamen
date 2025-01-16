@@ -1,13 +1,10 @@
 package com.pevinskevin.dronepizza.Model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
-
+@Entity
 public class Drone {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +13,9 @@ public class Drone {
     private DroneStatus operationalStatus;
     @ManyToOne
     private Station station;
+
+    public Drone() {
+    }
 
     public Drone(UUID serialUUID, DroneStatus operationalStatus, Station station) {
         this.serialUUID = serialUUID;

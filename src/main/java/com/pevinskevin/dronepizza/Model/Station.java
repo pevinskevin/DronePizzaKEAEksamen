@@ -1,8 +1,11 @@
 package com.pevinskevin.dronepizza.Model;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
+@Entity
 
 public class Station {
     @Id
@@ -10,6 +13,9 @@ public class Station {
     private long id;
     private double latitude;
     private double longitude;
+
+    public Station() {
+    }
 
     public Station(double latitude, double longitude) {
         this.latitude = latitude;

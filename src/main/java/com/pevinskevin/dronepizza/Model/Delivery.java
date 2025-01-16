@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import java.time.LocalTime;
 import java.util.List;
 
+@Entity
+
 public class Delivery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +18,9 @@ public class Delivery {
     private Drone drone;
     @OneToMany
     private List<Pizza> pizzas;
+
+    public Delivery() {
+    }
 
     public Delivery(String address, LocalTime expectedDeliveryTime, LocalTime actualDeliveryTime, Drone drone, List<Pizza> pizzas) {
         this.address = address;
