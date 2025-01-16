@@ -22,11 +22,9 @@ public class Delivery {
     public Delivery() {
     }
 
-    public Delivery(String address, LocalTime expectedDeliveryTime, LocalTime actualDeliveryTime, Drone drone, List<Pizza> pizzas) {
+    public Delivery(String address, LocalTime expectedDeliveryTime, List<Pizza> pizzas) {
         this.address = address;
         this.expectedDeliveryTime = expectedDeliveryTime;
-        this.actualDeliveryTime = actualDeliveryTime;
-        this.drone = drone;
         this.pizzas = pizzas;
     }
 

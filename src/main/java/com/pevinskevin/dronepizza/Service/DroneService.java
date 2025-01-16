@@ -4,6 +4,8 @@ import com.pevinskevin.dronepizza.Reposittory.DroneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DroneService {
     @Autowired
@@ -15,5 +17,9 @@ public class DroneService {
 
     public Drone getDroneById(Long id) {
         return droneRepository.findById(id).orElse(null);
+    }
+
+    public List<Drone> getAllDrones() {
+        return droneRepository.findAll();
     }
 }
