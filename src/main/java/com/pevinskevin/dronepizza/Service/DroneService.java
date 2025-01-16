@@ -28,6 +28,9 @@ public class DroneService {
         return droneRepository.findAll();
     }
 
+    public List<Drone> getAllDronesByStatus(DroneStatus status) {
+        return droneRepository.findAllByOperationalStatus(status);
+    }
 
     public Drone addNewDrone() {
         Station station = stationService.getStationById(stationService.returnStationIdWithLeastDrones());

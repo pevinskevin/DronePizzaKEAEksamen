@@ -3,7 +3,6 @@ package com.pevinskevin.dronepizza.Model;
 import jakarta.persistence.*;
 
 import java.time.LocalTime;
-import java.util.List;
 
 @Entity
 
@@ -17,7 +16,7 @@ public class Delivery {
     private Boolean isDelivered = false;
     @ManyToOne
     private Drone drone;
-    @OneToOne
+    @ManyToOne
     private Pizza pizza;
 
     public Delivery() {

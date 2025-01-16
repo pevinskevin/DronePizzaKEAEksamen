@@ -41,7 +41,6 @@ public class TestData implements CommandLineRunner {
 
         droneService.saveDrone(new Drone(UUID.randomUUID(), DroneStatus.I_DRIFT, station1));
         droneService.saveDrone(new Drone(UUID.randomUUID(), DroneStatus.I_DRIFT, station1));
-
         droneService.saveDrone(new Drone(UUID.randomUUID(), DroneStatus.I_DRIFT, station2));
         droneService.saveDrone(new Drone(UUID.randomUUID(), DroneStatus.I_DRIFT, station3));
 
@@ -49,6 +48,5 @@ public class TestData implements CommandLineRunner {
         deliveryService.saveDelivery(new Delivery("Kungsgatan 2", LocalTime.of(12, 0), pizzaService.getPizzaById(2L)));
         deliveryService.saveDelivery(new Delivery("Kungsgatan 3", LocalTime.of(13, 0), pizzaService.getPizzaById(3L)));
         deliveryService.saveDelivery(new Delivery("Kungsgatan 4", LocalTime.of(12, 0), pizzaService.getPizzaById(4L)));
-
     }
 }

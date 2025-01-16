@@ -7,4 +7,7 @@ import java.util.List;
 
 public interface DeliveryRepository extends JpaRepository<Delivery, Long> {
     List<Delivery> findAllByIsDeliveredIsFalse();
+
+    List<Delivery> findAllByIsDeliveredIsFalseAndDroneIsNull();
+
 }
