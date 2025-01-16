@@ -50,4 +50,11 @@ public class DeliveryService {
         delivery.setDrone(droneService.getDroneById(randomDroneId));
         return deliveryRepository.save(delivery);
     }
+
+    public Delivery updateIsDeliveredToTrue(long deliveryId) {
+        Delivery delivery = getDeliveryById(deliveryId);
+        delivery.setDelivered(true);
+        delivery.setActualDeliveryTime(LocalTime.now());
+        return deliveryRepository.save(delivery);
+    }
 }

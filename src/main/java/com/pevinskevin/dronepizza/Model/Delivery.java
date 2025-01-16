@@ -10,14 +10,14 @@ public class Delivery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String address;
-    private LocalTime expectedDeliveryTime;
-    private LocalTime actualDeliveryTime;
-    private Boolean isDelivered = false;
     @ManyToOne
     private Drone drone;
     @ManyToOne
     private Pizza pizza;
+    private String address;
+    private LocalTime expectedDeliveryTime;
+    private LocalTime actualDeliveryTime;
+    private Boolean isDelivered = false;
 
     public Delivery() {
     }

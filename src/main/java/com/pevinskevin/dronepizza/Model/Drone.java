@@ -9,10 +9,10 @@ public class Drone {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private UUID serialUUID;
-    private DroneStatus operationalStatus;
     @ManyToOne
     private Station station;
+    private UUID serialUUID;
+    private DroneStatus operationalStatus;
 
     public Drone() {
     }

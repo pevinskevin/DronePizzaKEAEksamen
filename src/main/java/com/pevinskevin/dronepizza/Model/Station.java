@@ -10,11 +10,11 @@ public class Station {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private double latitude;
-    private double longitude;
     @OneToMany(mappedBy = "station")
     @JsonIgnore
     private List<Drone> drone;
+    private double latitude;
+    private double longitude;
 
     public Station() {
     }

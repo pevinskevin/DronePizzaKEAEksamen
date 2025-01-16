@@ -33,5 +33,10 @@ public class DeliveryController {
     public Delivery addDelivery(String address, long pizzaId) {
         return deliveryService.createNewDelivery(address, pizzaId);
     }
+
+    @PostMapping("deliveries/finish")
+    public Delivery updateDeliveryAsDelivered(long deliveryId){
+        return deliveryService.updateIsDeliveredToTrue(deliveryId);
+    }
 }
 
