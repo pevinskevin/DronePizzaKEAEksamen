@@ -1,0 +1,19 @@
+### List of all drones
+GET localhost:8080/drones
+###
+
+### Add a new Drone to station with least amount of drones
+POST localhost:8080/drones/add
+###
+
+####
+POST localhost:8080/drones/enable?droneId=1
+####
+
+####
+POST localhost:8080/drones/disable?droneId=0
+####
+
+####
+POST localhost:8080/drones/retire?droneId=1
+####

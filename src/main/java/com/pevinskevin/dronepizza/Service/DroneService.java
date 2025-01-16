@@ -4,7 +4,9 @@ import com.pevinskevin.dronepizza.Model.DroneStatus;
 import com.pevinskevin.dronepizza.Model.Station;
 import com.pevinskevin.dronepizza.Reposittory.DroneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.UUID;
@@ -39,20 +41,44 @@ public class DroneService {
     }
 
     public Drone enableDrone(long droneId){
+        List<Drone> list = getAllDrones();
+        if (droneId > list.size() || droneId <= 0){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Drone not found - invalid ID.");
+        }
         Drone drone = getDroneById(droneId);
-        drone.setOperationalStatus(DroneStatus.I_DRIFT);
-        return saveDrone(drone);
+        if (drone.getOperationalStatus() != DroneStatus.I_DRIFT){
+            drone.setOperationalStatus(DroneStatus.I_DRIFT);
+            return saveDrone(drone);
+        } else {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Drone is already enabled");
+        }
     }
 
     public Drone disableDrone(long droneId){
+        List<Drone> list = getAllDrones();
+        if (droneId > list.size() || droneId <= 0){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Drone not found - invalid ID.");
+        }
         Drone drone = getDroneById(droneId);
-        drone.setOperationalStatus(DroneStatus.UDE_AF_DRIFT);
-        return saveDrone(drone);
+        if (drone.getOperationalStatus() != DroneStatus.UDE_AF_DRIFT){
+            drone.setOperationalStatus(DroneStatus.UDE_AF_DRIFT);
+            return saveDrone(drone);
+        } else {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Drone is already disabled");
+        }
     }
 
     public Drone retireDrone(long droneId){
+        List<Drone> list = getAllDrones();
+        if (droneId > list.size() || droneId <= 0){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Drone not found - invalid ID.");
+        }
         Drone drone = getDroneById(droneId);
-        drone.setOperationalStatus(DroneStatus.UDFASET);
-        return saveDrone(drone);
+        if (drone.getOperationalStatus() != DroneStatus.UDFASET){
+            drone.setOperationalStatus(DroneStatus.UDFASET);
+            return saveDrone(drone);
+        } else {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Drone is already retired");
+        }
     }
 }
