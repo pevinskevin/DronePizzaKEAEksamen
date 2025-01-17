@@ -69,8 +69,9 @@ public class DeliveryService {
         } else {
             Delivery delivery = getDeliveryById(deliveryId);
             List<Drone> drones = droneService.getAllDronesByStatus(DroneStatus.I_DRIFT);
-            Random random = new Random(drones.size() + 1);
-            Long randomDroneId = 1 + random.nextLong(drones.size());
+            Random random = new Random();
+            int randomInt = random.nextInt(drones.size());
+            long randomDroneId = 1 + randomInt;
             delivery.setDrone(droneService.getDroneById(randomDroneId));
             return deliveryRepository.save(delivery);
         }
